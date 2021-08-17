@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_lib/Utils/DatabaseHandler.dart';
 import 'package:e_lib/Utils/SizeConfig.dart';
 import 'package:e_lib/Utils/Utils.dart';
 import 'package:e_lib/helper/UIHelper.dart';
+import 'package:e_lib/models/LibraryModel.dart';
 import 'package:flutter/material.dart';
 
 class HomePageScreen extends StatefulWidget {
@@ -18,6 +20,21 @@ class _HomePageScreenState extends State<HomePageScreen> {
     Color(0XFF566E7A),
     Color(0XFF0177BB)
   ];
+  List<LibraryModel> libraries = [];
+
+  @override
+  void initState() {
+    super.initState();
+    DatabaseHandler().fetchLibraries().then((value) {
+      value.docs.forEach((element) {
+        LibraryModel libraryModel =
+            LibraryModel.fromJson(element.data() as dynamic);
+        libraries.add(libraryModel);
+      });
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -36,7 +53,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
             ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: 5,
+              itemCount: libraries.length,
               itemBuilder: (BuildContext context, int index) {
                 return getLibraryView(
                   index,
@@ -82,8 +99,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 ),
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
-                  imageUrl:
-                      "https://firebasestorage.googleapis.com/v0/b/e-lib-e53d6.appspot.com/o/28828394_950086555154619_9137006216337597187_o.jpg?alt=media&token=dd2c5145-1e19-43d6-ace7-6bede86f7a7d",
+                  imageUrl: libraries[index].libraryImage!,
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -98,7 +114,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       top: SizeConfig.safeBlockHorizontal * 4,
                     ),
                     child: Text(
-                      "Maulana Azad Library | AMU dnfsjgnksfgksfnj",
+                      libraries[index].libraryName!,
                       overflow: TextOverflow.ellipsis,
                       softWrap: true,
                       style: TextStyle(
@@ -113,7 +129,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       // top: SizeConfig.safeBlockHorizontal * 4,
                     ),
                     child: Text(
-                      "Aligarh",
+                      libraries[index].city!,
                       style: TextStyle(
                         color: Utils.black,
                         fontSize: SizeConfig.safeBlockHorizontal * 4,
@@ -127,7 +143,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       bottom: SizeConfig.safeBlockHorizontal * 2,
                     ),
                     child: Text(
-                      "Institutional",
+                      libraries[index].type!,
                       style: TextStyle(
                         color: Utils.black,
                         fontSize: SizeConfig.safeBlockHorizontal * 4,

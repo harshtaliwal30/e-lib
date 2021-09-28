@@ -1,9 +1,9 @@
-import 'package:e_lib/Utils/Utils.dart';
-import 'package:e_lib/screens/HomePageScreen.dart';
+import 'package:e_lib/Utils/utils.dart';
+import 'package:e_lib/Utils/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,14 +22,16 @@ class MyApp extends StatelessWidget {
         statusBarIconBrightness: Brightness.dark,
       ),
     );
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'E-Lib Admin',
       theme: ThemeData(
-        accentColor: Colors.white70,
         primarySwatch: Colors.blue,
-        fontFamily: GoogleFonts.lato().fontFamily,
+        accentColor: Colors.white70,
+        fontFamily: "OpenSans",
       ),
-      home: HomePageScreen(),
+      getPages: AppRoutes.routes(),
+      initialRoute: AppRoutes.homeScreenRoute,
     );
   }
 }

@@ -1,20 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_lib/Utils/DatabaseHandler.dart';
-import 'package:e_lib/Utils/Utils.dart';
+import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:e_lib/helper/UIHelper.dart';
 import 'package:e_lib/models/LibraryModel.dart';
 import 'package:e_lib/screens/LibraryPageScreen.dart';
+import 'package:e_lib/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
 
-class HomePageScreen extends StatefulWidget {
-  const HomePageScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomePageScreenState createState() => _HomePageScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePageScreenState extends State<HomePageScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   List<LibraryModel> libraries = [];
 
   @override

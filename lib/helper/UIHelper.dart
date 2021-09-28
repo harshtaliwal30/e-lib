@@ -1,4 +1,4 @@
-import 'package:e_lib/Utils/Utils.dart';
+import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:flutter/material.dart';
 

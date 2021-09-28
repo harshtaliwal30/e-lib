@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_lib/Utils/Utils.dart';
+import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:e_lib/helper/UIHelper.dart';
 import 'package:e_lib/models/LibraryModel.dart';

@@ -50,6 +50,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
               children: [
                 Expanded(
                   child: Container(
+                    height: 50,
                     padding: EdgeInsets.symmetric(
                       horizontal: SizeConfig.safeBlockHorizontal * 4,
                     ),

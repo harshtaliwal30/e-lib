@@ -31,6 +31,7 @@ dependencies:
   cloud_firestore: ^2.4.0
   firebase_core: ^1.4.0
   firebase_auth: ^3.0.1
+  get: ^4.3.8
   google_fonts: ^2.1.0
   cached_network_image: ^3.1.0
 
@@ -65,6 +66,19 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+    - family: OpenSans-Light
+      fonts:
+        - asset: assets/fonts/OpenSans-Light.ttf
+    - family: OpenSans-Bold
+      fonts:
+        - asset: assets/fonts/OpenSans-Bold.ttf
+    - family: OpenSans-ExtraBold
+      fonts:
+        - asset: assets/fonts/OpenSans-ExtraBold.ttf 
   # fonts:
   #   - family: Schyler
   #     fonts:

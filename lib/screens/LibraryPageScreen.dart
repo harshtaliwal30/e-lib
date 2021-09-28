@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_lib/Utils/SizeConfig.dart';
 import 'package:e_lib/Utils/Utils.dart';
+import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:e_lib/helper/UIHelper.dart';
 import 'package:e_lib/models/LibraryModel.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +41,7 @@ class _LibraryPageScreenState extends State<LibraryPageScreen> {
                 ),
               ),
               padding: EdgeInsets.all(
-                SizeConfig.safeBlockHorizontal * 2,
+                AppUIConst.safeBlockHorizontal * 2,
               ),
               child: Card(
                 color: Utils.lightBgColor,
@@ -50,7 +50,7 @@ class _LibraryPageScreenState extends State<LibraryPageScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: SizeConfig.screenHeight / 3.5,
+                      height: AppUIConst.screenHeight / 3.5,
                       width: double.infinity,
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(
@@ -66,41 +66,41 @@ class _LibraryPageScreenState extends State<LibraryPageScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 2,
-                        top: SizeConfig.safeBlockHorizontal * 4,
+                        left: AppUIConst.safeBlockHorizontal * 2,
+                        top: AppUIConst.safeBlockHorizontal * 4,
                       ),
                       child: Text(
                         widget.libraryModel.libraryName!,
                         softWrap: true,
                         style: TextStyle(
                           color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                          fontSize: AppUIConst.safeBlockHorizontal * 4.5,
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 2,
-                        top: SizeConfig.safeBlockHorizontal * 1,
+                        left: AppUIConst.safeBlockHorizontal * 2,
+                        top: AppUIConst.safeBlockHorizontal * 1,
                       ),
                       child: Text(
                         widget.libraryModel.type!,
                         style: TextStyle(
                           color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          fontSize: AppUIConst.safeBlockHorizontal * 4,
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 2,
-                        top: SizeConfig.safeBlockHorizontal * 1,
+                        left: AppUIConst.safeBlockHorizontal * 2,
+                        top: AppUIConst.safeBlockHorizontal * 1,
                       ),
                       child: Text(
                         widget.libraryModel.city!,
                         style: TextStyle(
                           color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          fontSize: AppUIConst.safeBlockHorizontal * 4,
                         ),
                       ),
                     ),

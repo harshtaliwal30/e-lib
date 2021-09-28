@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_lib/Utils/DatabaseHandler.dart';
-import 'package:e_lib/Utils/SizeConfig.dart';
 import 'package:e_lib/Utils/Utils.dart';
+import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:e_lib/helper/UIHelper.dart';
 import 'package:e_lib/models/LibraryModel.dart';
 import 'package:e_lib/screens/LibraryPageScreen.dart';
@@ -32,7 +32,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
+    AppUIConst.initOnStartUp(context);
     return Scaffold(
       backgroundColor: Utils.lightBgColor,
       appBar: PreferredSize(
@@ -52,10 +52,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   child: Container(
                     height: 50,
                     padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.safeBlockHorizontal * 4,
+                      horizontal: AppUIConst.safeBlockHorizontal * 4,
                     ),
                     margin: EdgeInsets.only(
-                      left: SizeConfig.safeBlockHorizontal * 2,
+                      left: AppUIConst.safeBlockHorizontal * 2,
                     ),
                     decoration: BoxDecoration(
                       color: Utils.pureWhite,
@@ -77,7 +77,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       decoration: InputDecoration(
                         hintText: 'Search for libraries',
                         hintStyle: TextStyle(
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          fontSize: AppUIConst.safeBlockHorizontal * 4,
                         ),
                         border: InputBorder.none,
                       ),
@@ -88,10 +88,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   onTap: () async {},
                   child: Container(
                     margin: EdgeInsets.only(
-                      right: SizeConfig.safeBlockHorizontal * 2,
+                      right: AppUIConst.safeBlockHorizontal * 2,
                     ),
                     padding: EdgeInsets.only(
-                      left: SizeConfig.safeBlockHorizontal * 4,
+                      left: AppUIConst.safeBlockHorizontal * 4,
                     ),
                     child: Icon(Icons.search),
                   ),
@@ -99,7 +99,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
               ],
             ),
             SizedBox(
-              height: SizeConfig.safeBlockHorizontal * 6,
+              height: AppUIConst.safeBlockHorizontal * 6,
             ),
             ListView.builder(
               scrollDirection: Axis.vertical,
@@ -143,20 +143,20 @@ class _HomePageScreenState extends State<HomePageScreen> {
           ),
         ),
         margin: EdgeInsets.only(
-          left: SizeConfig.safeBlockHorizontal * 2,
-          right: SizeConfig.safeBlockHorizontal * 2,
-          bottom: SizeConfig.safeBlockHorizontal * 2,
+          left: AppUIConst.safeBlockHorizontal * 2,
+          right: AppUIConst.safeBlockHorizontal * 2,
+          bottom: AppUIConst.safeBlockHorizontal * 2,
         ),
         child: Container(
           padding: EdgeInsets.all(
-            SizeConfig.safeBlockHorizontal * 2,
+            AppUIConst.safeBlockHorizontal * 2,
           ),
-          height: SizeConfig.screenHeight / 6,
+          height: AppUIConst.screenHeight / 6,
           child: Row(
             children: [
               Container(
-                height: SizeConfig.screenHeight / 6,
-                width: SizeConfig.screenWidth / 4,
+                height: AppUIConst.screenHeight / 6,
+                width: AppUIConst.screenWidth / 4,
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(
                     Radius.circular(10),
@@ -174,8 +174,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 3,
-                        top: SizeConfig.safeBlockHorizontal * 4,
+                        left: AppUIConst.safeBlockHorizontal * 3,
+                        top: AppUIConst.safeBlockHorizontal * 4,
                       ),
                       child: Text(
                         libraries[index].libraryName!,
@@ -184,34 +184,34 @@ class _HomePageScreenState extends State<HomePageScreen> {
                         style: TextStyle(
                           color: Utils.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                          fontSize: AppUIConst.safeBlockHorizontal * 4.5,
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 3,
-                        top: SizeConfig.safeBlockHorizontal * 1,
+                        left: AppUIConst.safeBlockHorizontal * 3,
+                        top: AppUIConst.safeBlockHorizontal * 1,
                       ),
                       child: Text(
                         libraries[index].city!,
                         style: TextStyle(
                           color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          fontSize: AppUIConst.safeBlockHorizontal * 4,
                         ),
                       ),
                     ),
                     Spacer(),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 3,
-                        bottom: SizeConfig.safeBlockHorizontal * 2,
+                        left: AppUIConst.safeBlockHorizontal * 3,
+                        bottom: AppUIConst.safeBlockHorizontal * 2,
                       ),
                       child: Text(
                         libraries[index].type!,
                         style: TextStyle(
                           color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          fontSize: AppUIConst.safeBlockHorizontal * 4,
                         ),
                       ),
                     )

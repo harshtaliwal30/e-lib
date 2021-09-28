@@ -1,5 +1,5 @@
-import 'package:e_lib/Utils/SizeConfig.dart';
 import 'package:e_lib/Utils/Utils.dart';
+import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:flutter/material.dart';
 
 class UIHelper {
@@ -20,7 +20,7 @@ class UIHelper {
         title,
         style: TextStyle(
           color: Utils.black,
-          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+          fontSize: AppUIConst.safeBlockHorizontal * 4.5,
         ),
       ),
     );

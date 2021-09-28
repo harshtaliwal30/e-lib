@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     );
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'E-Lib Admin',
+      title: 'E-Lib',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         accentColor: Colors.white70,

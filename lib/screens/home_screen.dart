@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/app_ui_constants.dart';
-import 'package:e_lib/helper/UIHelper.dart';
-import 'package:e_lib/models/LibraryModel.dart';
-import 'package:e_lib/screens/LibraryPageScreen.dart';
-import 'package:e_lib/services/DatabaseHandler.dart';
+import 'package:e_lib/models/library_model.dart';
+import 'package:e_lib/screens/library_screen.dart';
+import 'package:e_lib/services/database_handler.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -35,11 +34,15 @@ class _HomeScreenState extends State<HomeScreen> {
     AppUIConst.initOnStartUp(context);
     return Scaffold(
       backgroundColor: Utils.lightBgColor,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
-        child: UIHelper.getAppBarView(
-          context,
-          "Libraries",
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Utils.primaryColor),
+        elevation: 0.0,
+        centerTitle: true,
+        backgroundColor: Utils.white,
+        title: Utils().getText(
+          'Libraries',
+          color: Utils.primaryColor,
+          fontSize: AppUIConst.baseFontSize * 4.5,
         ),
       ),
       body: SingleChildScrollView(
@@ -58,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       left: AppUIConst.safeBlockHorizontal * 2,
                     ),
                     decoration: BoxDecoration(
-                      color: Utils.pureWhite,
+                      color: Utils.white,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
                       ),
@@ -131,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
       child: Card(
-        shadowColor: Utils.aliceBlue,
+        shadowColor: Utils.blue,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(

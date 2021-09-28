@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/app_ui_constants.dart';
-import 'package:e_lib/helper/UIHelper.dart';
-import 'package:e_lib/models/LibraryModel.dart';
+import 'package:e_lib/models/library_model.dart';
 import 'package:flutter/material.dart';
 
 class LibraryPageScreen extends StatefulWidget {
@@ -21,12 +20,16 @@ class _LibraryPageScreenState extends State<LibraryPageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Utils.pureWhite,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
-        child: UIHelper.getAppBarView(
-          context,
+      backgroundColor: Utils.white,
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Utils.primaryColor),
+        elevation: 0.0,
+        centerTitle: true,
+        backgroundColor: Utils.white,
+        title: Utils().getText(
           widget.libraryModel.libraryName!,
+          color: Utils.primaryColor,
+          fontSize: AppUIConst.baseFontSize * 4.5,
         ),
       ),
       body: SingleChildScrollView(

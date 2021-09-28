@@ -19,14 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    DatabaseHandler().fetchLibraries().then((value) {
-      value.docs.forEach((element) {
-        LibraryModel libraryModel =
-            LibraryModel.fromJson(element.data() as dynamic);
-        libraries.add(libraryModel);
-      });
-      setState(() {});
-    });
   }
 
   @override

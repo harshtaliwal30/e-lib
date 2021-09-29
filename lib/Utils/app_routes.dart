@@ -18,7 +18,7 @@ class AppRoutes {
     return [
       _page(homeScreenRoute, () => HomeScreen()),
       _page(loginScreenRoute, () => LoginScreen()),
-      _page(loginScreenRoute, () => OTPScreen()),
+      _page(otpScreenRoute, () => OTPScreen()),
       // GetPage(name: loginRoute, page: () => LoginScreen()),
       // GetPage(
       //     name: homeitemviewRoute,

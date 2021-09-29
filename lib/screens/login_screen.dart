@@ -98,7 +98,7 @@ class LoginScreen extends StatelessWidget {
         SizedBox(width: 10),
         Expanded(
           child: TextField(
-            // controller: _loginController.phoneController,
+            controller: _loginController.phoneController,
             cursorColor: Utils.primaryColor,
             keyboardType: TextInputType.phone,
             maxLength: 10,

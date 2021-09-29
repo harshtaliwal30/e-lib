@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OTPScreen extends StatelessWidget {
+  FocusNode otpNode = FocusNode();
   final LoginController _loginController = Get.find<LoginController>();
 
   @override
@@ -15,7 +16,7 @@ class OTPScreen extends StatelessWidget {
         body: Obx(
           () => GestureDetector(
             onTap: () {
-              FocusScope.of(context).unfocus();
+              otpNode.unfocus();
               new TextEditingController().clear();
             },
             child: SingleChildScrollView(
@@ -139,6 +140,7 @@ class OTPScreen extends StatelessWidget {
         ),
         Expanded(
           child: TextField(
+            focusNode: otpNode,
             controller: _loginController.otpController,
             cursorColor: Utils.primaryColor,
             keyboardType: TextInputType.phone,
@@ -169,6 +171,7 @@ class OTPScreen extends StatelessWidget {
   Widget getButton() {
     return InkWell(
       onTap: () {
+        otpNode.unfocus();
         _loginController.checkOTP();
       },
       child: Container(

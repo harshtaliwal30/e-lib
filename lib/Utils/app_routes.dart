@@ -1,10 +1,12 @@
 import 'package:e_lib/screens/home_screen.dart';
+import 'package:e_lib/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
   static const String splashScreenRoute = "/splashScreen";
   static const String homeScreenRoute = "/homeScreen";
+  static const String loginScreenRoute = "/loginScreen";
 
   static routes() {
     GetPage<dynamic> _page(String route, var page) {
@@ -13,6 +15,7 @@ class AppRoutes {
 
     return [
       _page(homeScreenRoute, () => HomeScreen()),
+      _page(loginScreenRoute, () => LoginScreen()),
       // GetPage(name: loginRoute, page: () => LoginScreen()),
       // GetPage(
       //     name: homeitemviewRoute,
@@ -24,8 +27,7 @@ class AppRoutes {
     Get.toNamed(routeName);
   }
 
-  static void moveToScreenWithArguments(String routeName,
-      {@required var arguments}) {
+  static void moveToScreenWithArguments(String routeName, {@required var arguments}) {
     Get.toNamed(routeName, arguments: arguments);
   }
 
@@ -37,8 +39,7 @@ class AppRoutes {
     Get.offAllNamed(routeName);
   }
 
-  static void moveOffAllScreenWithArguments(String routeName,
-      {@required var arguments}) {
+  static void moveOffAllScreenWithArguments(String routeName, {@required var arguments}) {
     Get.offAll(routeName, arguments: arguments);
   }
 }

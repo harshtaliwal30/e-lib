@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "OpenSans",
       ),
       getPages: AppRoutes.routes(),
-      initialRoute: AppRoutes.homeScreenRoute,
+      initialRoute: AppRoutes.loginScreenRoute,
     );
   }
 }

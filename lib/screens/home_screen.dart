@@ -18,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    AppUIConst.initOnStartUp(context);
     return Scaffold(
       backgroundColor: Utils.white,
       appBar: AppBar(
@@ -103,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => LibraryPageScreen(
+            builder: (context) => LibraryScreen(
               libraryModel: _homePageController.librariesDataList[index],
             ),
           ),

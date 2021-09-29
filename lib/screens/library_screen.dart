@@ -4,8 +4,8 @@ import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:e_lib/models/library_model.dart';
 import 'package:flutter/material.dart';
 
-class LibraryPageScreen extends StatefulWidget {
-  const LibraryPageScreen({
+class LibraryScreen extends StatefulWidget {
+  const LibraryScreen({
     Key? key,
     required this.libraryModel,
   }) : super(key: key);
@@ -13,10 +13,10 @@ class LibraryPageScreen extends StatefulWidget {
   final LibraryModel libraryModel;
 
   @override
-  _LibraryPageScreenState createState() => _LibraryPageScreenState();
+  _LibraryScreenState createState() => _LibraryScreenState();
 }
 
-class _LibraryPageScreenState extends State<LibraryPageScreen> {
+class _LibraryScreenState extends State<LibraryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,8 +62,7 @@ class _LibraryPageScreenState extends State<LibraryPageScreen> {
                         child: CachedNetworkImage(
                           fit: BoxFit.fill,
                           imageUrl: widget.libraryModel.libraryImage!,
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
                       ),
                     ),

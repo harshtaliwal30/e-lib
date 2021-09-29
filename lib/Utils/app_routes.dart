@@ -1,5 +1,6 @@
 import 'package:e_lib/screens/home_screen.dart';
 import 'package:e_lib/screens/login_screen.dart';
+import 'package:e_lib/screens/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +18,7 @@ class AppRoutes {
     return [
       _page(homeScreenRoute, () => HomeScreen()),
       _page(loginScreenRoute, () => LoginScreen()),
+      _page(loginScreenRoute, () => OTPScreen()),
       // GetPage(name: loginRoute, page: () => LoginScreen()),
       // GetPage(
       //     name: homeitemviewRoute,

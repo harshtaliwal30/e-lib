@@ -1,4 +1,6 @@
+import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Utils {
   static const white = Colors.white;
@@ -15,6 +17,87 @@ class Utils {
   static const primaryColor = Color(0XFF2C3848);
   static const whip = Color(0XFFF8E8CF);
   static const amber = Color(0XFFFFC500);
+
+  static const String KEY_ISLOGIN = "isLogin";
+  static const String KEY_USERID = "userId";
+  static const String KEY_USERNAME = "userName";
+  static const String KEY_USEREMAIL = "userEmail";
+  static const String KEY_USERPHONE = "userPhone";
+  static const String KEY_USERIMAGE = "userImage";
+
+  void showWarningSnackbar(String msg) {
+    Get.snackbar(
+      "Warning",
+      msg,
+      backgroundColor: Utils.whip,
+      borderRadius: 5.0,
+      padding: EdgeInsets.symmetric(
+        vertical: AppUIConst.safeBlockVertical * 1,
+      ),
+      duration: Duration(milliseconds: 1000),
+      icon: Icon(Icons.warning_amber_rounded),
+      snackPosition: SnackPosition.BOTTOM,
+      margin: EdgeInsets.only(
+        bottom: AppUIConst.safeBlockVertical * 2,
+        left: AppUIConst.safeBlockHorizontal * 3,
+        right: AppUIConst.safeBlockHorizontal * 3,
+      ),
+    );
+  }
+
+  void showConfirmSnackbar(String msg) {
+    Get.snackbar(
+      "Success",
+      msg,
+      backgroundColor: Utils.green,
+      borderRadius: 5.0,
+      padding: EdgeInsets.symmetric(
+        vertical: AppUIConst.safeBlockVertical * 1,
+      ),
+      colorText: Utils.white,
+      duration: Duration(milliseconds: 2000),
+      icon: Icon(
+        Icons.emoji_emotions_rounded,
+        color: Utils.white,
+      ),
+      snackPosition: SnackPosition.BOTTOM,
+      margin: EdgeInsets.only(
+        bottom: AppUIConst.safeBlockVertical * 2,
+        left: AppUIConst.safeBlockHorizontal * 3,
+        right: AppUIConst.safeBlockHorizontal * 3,
+      ),
+    );
+  }
+
+  Future<dynamic> showDialog(
+    String title,
+    String msg,
+    Function()? onConfirm,
+  ) async {
+    return await Get.defaultDialog(
+      title: title,
+      middleText: msg,
+      barrierDismissible: false,
+      radius: 10,
+      buttonColor: Utils.primaryColor,
+      onCancel: null,
+      onConfirm: onConfirm,
+      textCancel: "No",
+      textConfirm: "Yes",
+      cancelTextColor: Utils.primaryColor,
+      confirmTextColor: Utils.white,
+    );
+  }
+
+  Future<dynamic> showLoader() async {
+    return await Get.defaultDialog(
+      title: "Loading...",
+      titleStyle: TextStyle(fontSize: AppUIConst.baseFontSize * 4),
+      radius: 10,
+      content: Container(height: 30, width: 30, child: CircularProgressIndicator()),
+      barrierDismissible: false,
+    );
+  }
 
   Padding getWithPadding(
     Widget child, {

@@ -1,10 +1,12 @@
+import 'package:e_lib/Utils/app_routes.dart';
 import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:e_lib/Utils/utils.dart';
+import 'package:e_lib/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
-  // final LoginController _loginController = Get.put(LoginController());
+  final LoginController _loginController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     AppUIConst.initOnStartUp(context);
@@ -126,12 +128,12 @@ class LoginScreen extends StatelessWidget {
   Widget getButton() {
     return InkWell(
       onTap: () async {
-        // if (_loginController.phoneController.text.length == 10) {
-        //   AppRoutes.moveToScreen("/otpScreen");
-        //   _loginController.sendOTPMsg();
-        // } else {
-        //   Utils().showWarningSnackbar("Please enter valid phone number");
-        // }
+        if (_loginController.phoneController.text.length == 10) {
+          AppRoutes.moveToScreen("/otpScreen");
+          _loginController.sendOTPMsg();
+        } else {
+          Utils().showWarningSnackbar("Please enter valid phone number");
+        }
       },
       child: Container(
         alignment: Alignment.center,

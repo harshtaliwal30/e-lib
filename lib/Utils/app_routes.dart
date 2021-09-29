@@ -7,6 +7,7 @@ class AppRoutes {
   static const String splashScreenRoute = "/splashScreen";
   static const String homeScreenRoute = "/homeScreen";
   static const String loginScreenRoute = "/loginScreen";
+  static const String otpScreenRoute = "/otpScreen";
 
   static routes() {
     GetPage<dynamic> _page(String route, var page) {

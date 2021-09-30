@@ -133,6 +133,7 @@ class Utils {
         color: color,
         fontWeight: fontWeight,
         fontSize: fontSize,
+        letterSpacing: 0.5,
       ),
     );
   }

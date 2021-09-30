@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OTPScreen extends StatelessWidget {
-  FocusNode otpNode = FocusNode();
+  final FocusNode otpNode = FocusNode();
   final LoginController _loginController = Get.find<LoginController>();
 
   @override

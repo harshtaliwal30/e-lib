@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/app_ui_constants.dart';
 import 'package:e_lib/controllers/home_screen_controller.dart';
+import 'package:e_lib/screens/drawer_screen.dart';
 import 'package:e_lib/screens/library_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -93,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      drawer: DrawerScreen(),
     );
   }
 

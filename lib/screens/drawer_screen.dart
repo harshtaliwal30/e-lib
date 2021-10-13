@@ -60,7 +60,7 @@ class DrawerScreen extends StatelessWidget {
             ),
             getDrawerItem(
               "Profile",
-              Icons.notifications_on_outlined,
+              Icons.person,
               "/issueRequestsScreen",
               () => {
                 // Get.back(),
@@ -83,7 +83,7 @@ class DrawerScreen extends StatelessWidget {
             ),
             getDrawerItem(
               "Contact Us",
-              Icons.notifications_on_outlined,
+              Icons.phone,
               "/issueRequestsScreen",
               () => {
                 // Get.back(),

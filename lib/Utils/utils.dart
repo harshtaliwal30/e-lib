@@ -1,4 +1,4 @@
-import 'package:e_lib/Utils/app_ui_constants.dart';
+import 'package:e_lib/Utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,15 +32,15 @@ class Utils {
       backgroundColor: Utils.whip,
       borderRadius: 5.0,
       padding: EdgeInsets.symmetric(
-        vertical: AppUIConst.safeBlockVertical * 1,
+        vertical: SizeConfig.safeBlockVertical * 1,
       ),
       duration: Duration(milliseconds: 1000),
       icon: Icon(Icons.warning_amber_rounded),
       snackPosition: SnackPosition.BOTTOM,
       margin: EdgeInsets.only(
-        bottom: AppUIConst.safeBlockVertical * 2,
-        left: AppUIConst.safeBlockHorizontal * 3,
-        right: AppUIConst.safeBlockHorizontal * 3,
+        bottom: SizeConfig.safeBlockVertical * 2,
+        left: SizeConfig.safeBlockHorizontal * 3,
+        right: SizeConfig.safeBlockHorizontal * 3,
       ),
     );
   }
@@ -52,7 +52,7 @@ class Utils {
       backgroundColor: Utils.green,
       borderRadius: 5.0,
       padding: EdgeInsets.symmetric(
-        vertical: AppUIConst.safeBlockVertical * 1,
+        vertical: SizeConfig.safeBlockVertical * 1,
       ),
       colorText: Utils.white,
       duration: Duration(milliseconds: 2000),
@@ -62,9 +62,9 @@ class Utils {
       ),
       snackPosition: SnackPosition.BOTTOM,
       margin: EdgeInsets.only(
-        bottom: AppUIConst.safeBlockVertical * 2,
-        left: AppUIConst.safeBlockHorizontal * 3,
-        right: AppUIConst.safeBlockHorizontal * 3,
+        bottom: SizeConfig.safeBlockVertical * 2,
+        left: SizeConfig.safeBlockHorizontal * 3,
+        right: SizeConfig.safeBlockHorizontal * 3,
       ),
     );
   }
@@ -92,7 +92,7 @@ class Utils {
   Future<dynamic> showLoader() async {
     return await Get.defaultDialog(
       title: "Loading...",
-      titleStyle: TextStyle(fontSize: AppUIConst.baseFontSize * 4),
+      titleStyle: TextStyle(fontSize: SizeConfig.baseFontSize * 4),
       radius: 10,
       content: Container(height: 30, width: 30, child: CircularProgressIndicator()),
       barrierDismissible: false,
@@ -150,14 +150,14 @@ class Utils {
         ),
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: AppUIConst.safeBlockHorizontal * 2,
-        vertical: AppUIConst.safeBlockVertical * 0.05,
+        horizontal: SizeConfig.safeBlockHorizontal * 2,
+        vertical: SizeConfig.safeBlockVertical * 0.05,
       ),
       child: Utils().getText(
         value,
         color: color,
         fontWeight: FontWeight.bold,
-        fontSize: AppUIConst.baseFontSize * 2.9,
+        fontSize: SizeConfig.baseFontSize * 2.9,
       ),
     );
   }

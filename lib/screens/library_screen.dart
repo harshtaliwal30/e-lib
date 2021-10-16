@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_lib/Utils/utils.dart';
-import 'package:e_lib/Utils/app_ui_constants.dart';
+import 'package:e_lib/Utils/size_config.dart';
 import 'package:e_lib/controllers/library_screen_controller.dart';
 import 'package:e_lib/models/library_model.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class LibraryScreen extends StatelessWidget {
         title: Utils().getText(
           libraryModel.libraryName!,
           color: Utils.primaryColor,
-          fontSize: AppUIConst.baseFontSize * 4.5,
+          fontSize: SizeConfig.baseFontSize * 4.5,
         ),
       ),
       body: SingleChildScrollView(
@@ -39,7 +39,7 @@ class LibraryScreen extends StatelessWidget {
                 ),
               ),
               padding: EdgeInsets.all(
-                AppUIConst.safeBlockHorizontal * 2,
+                SizeConfig.safeBlockHorizontal * 2,
               ),
               child: Card(
                 color: Utils.lightBgColor,
@@ -48,7 +48,7 @@ class LibraryScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: AppUIConst.screenHeight / 3.5,
+                      height: SizeConfig.screenHeight / 3.5,
                       width: double.infinity,
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(
@@ -63,41 +63,41 @@ class LibraryScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: AppUIConst.safeBlockHorizontal * 2,
-                        top: AppUIConst.safeBlockHorizontal * 4,
+                        left: SizeConfig.safeBlockHorizontal * 2,
+                        top: SizeConfig.safeBlockHorizontal * 4,
                       ),
                       child: Text(
                         libraryModel.libraryName!,
                         softWrap: true,
                         style: TextStyle(
                           color: Utils.black,
-                          fontSize: AppUIConst.safeBlockHorizontal * 4.5,
+                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: AppUIConst.safeBlockHorizontal * 2,
-                        top: AppUIConst.safeBlockHorizontal * 1,
+                        left: SizeConfig.safeBlockHorizontal * 2,
+                        top: SizeConfig.safeBlockHorizontal * 1,
                       ),
                       child: Text(
                         libraryModel.type!,
                         style: TextStyle(
                           color: Utils.black,
-                          fontSize: AppUIConst.safeBlockHorizontal * 4,
+                          fontSize: SizeConfig.safeBlockHorizontal * 4,
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: AppUIConst.safeBlockHorizontal * 2,
-                        top: AppUIConst.safeBlockHorizontal * 1,
+                        left: SizeConfig.safeBlockHorizontal * 2,
+                        top: SizeConfig.safeBlockHorizontal * 1,
                       ),
                       child: Text(
                         libraryModel.city!,
                         style: TextStyle(
                           color: Utils.black,
-                          fontSize: AppUIConst.safeBlockHorizontal * 4,
+                          fontSize: SizeConfig.safeBlockHorizontal * 4,
                         ),
                       ),
                     ),
@@ -120,9 +120,9 @@ class LibraryScreen extends StatelessWidget {
   Widget getBookItem(int index) {
     return Container(
       margin: EdgeInsets.only(
-        left: AppUIConst.safeBlockHorizontal * 2,
-        right: AppUIConst.safeBlockHorizontal * 2,
-        bottom: AppUIConst.safeBlockHorizontal * 3,
+        left: SizeConfig.safeBlockHorizontal * 2,
+        right: SizeConfig.safeBlockHorizontal * 2,
+        bottom: SizeConfig.safeBlockHorizontal * 3,
       ),
       child: Stack(
         children: [
@@ -135,15 +135,15 @@ class LibraryScreen extends StatelessWidget {
               ),
             ),
             margin: EdgeInsets.only(
-              right: AppUIConst.safeBlockHorizontal * 3.5,
+              right: SizeConfig.safeBlockHorizontal * 3.5,
             ),
             child: Container(
-              height: AppUIConst.screenHeight / 5.5,
+              height: SizeConfig.screenHeight / 5.5,
               child: Row(
                 children: [
                   Container(
-                    height: AppUIConst.screenHeight / 5.5,
-                    width: AppUIConst.screenWidth / 4,
+                    height: SizeConfig.screenHeight / 5.5,
+                    width: SizeConfig.screenWidth / 4,
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10),
@@ -164,21 +164,21 @@ class LibraryScreen extends StatelessWidget {
                         Utils().getWithPadding(
                           Utils().getText(
                             _libraryScreenController.booksDataList[index].bookName,
-                            fontSize: AppUIConst.baseFontSize * 4,
+                            fontSize: SizeConfig.baseFontSize * 4,
                           ),
-                          top: AppUIConst.safeBlockVertical * 1,
-                          right: AppUIConst.safeBlockHorizontal * 5,
-                          left: AppUIConst.safeBlockHorizontal * 3,
+                          top: SizeConfig.safeBlockVertical * 1,
+                          right: SizeConfig.safeBlockHorizontal * 5,
+                          left: SizeConfig.safeBlockHorizontal * 3,
                         ),
                         Utils().getWithPadding(
                           Utils().getText(
                             _libraryScreenController.booksDataList[index].authorName,
                             color: Utils.grey,
-                            fontSize: AppUIConst.baseFontSize * 3.2,
+                            fontSize: SizeConfig.baseFontSize * 3.2,
                           ),
-                          left: AppUIConst.safeBlockHorizontal * 3,
-                          right: AppUIConst.safeBlockHorizontal * 3,
-                          bottom: AppUIConst.safeBlockHorizontal * 2,
+                          left: SizeConfig.safeBlockHorizontal * 3,
+                          right: SizeConfig.safeBlockHorizontal * 3,
+                          bottom: SizeConfig.safeBlockHorizontal * 2,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -188,19 +188,19 @@ class LibraryScreen extends StatelessWidget {
                             ),
                           ),
                           margin: EdgeInsets.only(
-                            left: AppUIConst.safeBlockHorizontal * 3,
+                            left: SizeConfig.safeBlockHorizontal * 3,
                           ),
                           child: Utils().getWithPadding(
                             Utils().getText(
                               "Quantity: " + _libraryScreenController.booksDataList[index].quantity.toString(),
                               color: Utils.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: AppUIConst.baseFontSize * 2.9,
+                              fontSize: SizeConfig.baseFontSize * 2.9,
                             ),
-                            top: AppUIConst.safeBlockVertical * 0.3,
-                            bottom: AppUIConst.safeBlockVertical * 0.3,
-                            left: AppUIConst.safeBlockHorizontal * 2,
-                            right: AppUIConst.safeBlockHorizontal * 2,
+                            top: SizeConfig.safeBlockVertical * 0.3,
+                            bottom: SizeConfig.safeBlockVertical * 0.3,
+                            left: SizeConfig.safeBlockHorizontal * 2,
+                            right: SizeConfig.safeBlockHorizontal * 2,
                           ),
                         ),
                         Row(
@@ -211,19 +211,19 @@ class LibraryScreen extends StatelessWidget {
                                 "₹" + _libraryScreenController.booksDataList[index].price.toString(),
                                 color: Utils.green,
                                 fontWeight: FontWeight.bold,
-                                fontSize: AppUIConst.baseFontSize * 3.2,
+                                fontSize: SizeConfig.baseFontSize * 3.2,
                               ),
-                              top: AppUIConst.safeBlockVertical * 1,
-                              left: AppUIConst.safeBlockHorizontal * 3,
+                              top: SizeConfig.safeBlockVertical * 1,
+                              left: SizeConfig.safeBlockHorizontal * 3,
                             ),
                             Utils().getWithPadding(
                               Utils().getText(
                                 "Security: " + _libraryScreenController.booksDataList[index].percentSecurity.toString() + "%",
                                 color: Utils.primaryColor,
-                                fontSize: AppUIConst.baseFontSize * 3.2,
+                                fontSize: SizeConfig.baseFontSize * 3.2,
                               ),
-                              top: AppUIConst.safeBlockVertical * 1,
-                              right: AppUIConst.safeBlockHorizontal * 2,
+                              top: SizeConfig.safeBlockVertical * 1,
+                              right: SizeConfig.safeBlockHorizontal * 2,
                             ),
                           ],
                         ),
@@ -238,18 +238,18 @@ class LibraryScreen extends StatelessWidget {
                             ),
                           ),
                           margin: EdgeInsets.only(
-                            left: AppUIConst.safeBlockHorizontal * 3,
-                            bottom: AppUIConst.safeBlockVertical * 1,
+                            left: SizeConfig.safeBlockHorizontal * 3,
+                            bottom: SizeConfig.safeBlockVertical * 1,
                           ),
                           child: Utils().getWithPadding(
                             Utils().getText(
                               _libraryScreenController.booksDataList[index].category ?? "Category",
-                              fontSize: AppUIConst.baseFontSize * 3.0,
+                              fontSize: SizeConfig.baseFontSize * 3.0,
                             ),
-                            top: AppUIConst.safeBlockVertical * 0.2,
-                            bottom: AppUIConst.safeBlockVertical * 0.2,
-                            left: AppUIConst.safeBlockHorizontal * 2,
-                            right: AppUIConst.safeBlockHorizontal * 2,
+                            top: SizeConfig.safeBlockVertical * 0.2,
+                            bottom: SizeConfig.safeBlockVertical * 0.2,
+                            left: SizeConfig.safeBlockHorizontal * 2,
+                            right: SizeConfig.safeBlockHorizontal * 2,
                           ),
                         ),
                       ],
@@ -273,7 +273,7 @@ class LibraryScreen extends StatelessWidget {
                     backgroundColor: Utils.blue,
                     child: Icon(
                       Icons.edit,
-                      size: AppUIConst.iconExamHeightAndWidth * 0.5,
+                      size: SizeConfig.iconExamHeightAndWidth * 0.5,
                       color: Utils.white,
                     ),
                   ),
@@ -301,7 +301,7 @@ class LibraryScreen extends StatelessWidget {
                     backgroundColor: Utils.red,
                     child: Icon(
                       Icons.delete,
-                      size: AppUIConst.iconExamHeightAndWidth * 0.5,
+                      size: SizeConfig.iconExamHeightAndWidth * 0.5,
                       color: Utils.white,
                     ),
                   ),

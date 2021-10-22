@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.initOnStartUp(context);
     return Scaffold(
       backgroundColor: Utils.white,
       appBar: AppBar(
@@ -111,20 +112,16 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
       child: Card(
-        shadowColor: Utils.blue,
-        elevation: 0,
+        shadowColor: Utils.white,
+        elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(10),
           ),
-          side: BorderSide(
-            color: Utils.black,
-            width: 0.5,
-          ),
         ),
         margin: EdgeInsets.only(
-          left: SizeConfig.safeBlockHorizontal * 2,
-          right: SizeConfig.safeBlockHorizontal * 2,
+          left: SizeConfig.safeBlockHorizontal * 4,
+          right: SizeConfig.safeBlockHorizontal * 4,
           bottom: SizeConfig.safeBlockHorizontal * 2,
         ),
         child: Container(
@@ -155,17 +152,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: EdgeInsets.only(
                         left: SizeConfig.safeBlockHorizontal * 3,
-                        top: SizeConfig.safeBlockHorizontal * 4,
                       ),
-                      child: Text(
+                      child: Utils().getText(
                         _homePageController.librariesDataList[index].libraryName ?? "",
-                        overflow: TextOverflow.ellipsis,
-                        softWrap: true,
-                        style: TextStyle(
-                          color: Utils.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                        ),
+                        color: Utils.primaryColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: SizeConfig.baseFontSize * 4,
                       ),
                     ),
                     Padding(
@@ -174,10 +166,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         top: SizeConfig.safeBlockHorizontal * 1,
                       ),
                       child: Text(
-                        _homePageController.librariesDataList[index].city ?? "",
+                        _homePageController.librariesDataList[index].address +
+                            ", " +
+                            _homePageController.librariesDataList[index].city +
+                            ", " +
+                            _homePageController.librariesDataList[index].state +
+                            ", " +
+                            _homePageController.librariesDataList[index].country,
                         style: TextStyle(
-                          color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          color: Utils.primaryColor,
+                          fontSize: SizeConfig.safeBlockHorizontal * 3.5,
                         ),
                       ),
                     ),
@@ -185,13 +183,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: EdgeInsets.only(
                         left: SizeConfig.safeBlockHorizontal * 3,
-                        bottom: SizeConfig.safeBlockHorizontal * 2,
                       ),
                       child: Text(
                         _homePageController.librariesDataList[index].type ?? "",
                         style: TextStyle(
-                          color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          color: Utils.darkGrey,
+                          fontSize: SizeConfig.safeBlockHorizontal * 3.8,
                         ),
                       ),
                     )

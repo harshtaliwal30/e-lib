@@ -1,45 +1,52 @@
 class LibraryModel {
+  String? libraryId;
   String? libraryName;
-  String? city;
-  String? libraryImage;
-  String? type;
-  String? address;
   String? libraryEmail;
   String? libraryPhone;
-  String? libraryId;
+  String? libraryImage;
+  String? address;
+  String? country;
+  String? state;
+  String? city;
+  String? type;
 
   LibraryModel({
+    this.libraryId,
     this.libraryName,
-    this.city,
-    this.libraryImage,
-    this.type,
-    this.address,
     this.libraryEmail,
     this.libraryPhone,
-    this.libraryId,
+    this.libraryImage,
+    this.address,
+    this.country,
+    this.state,
+    this.city,
+    this.type,
   });
 
   LibraryModel.fromJson(Map<String, dynamic> json) {
+    libraryId = json['libraryId'];
     libraryName = json['libraryName'];
-    city = json['city'];
-    libraryImage = json['libraryImage'];
-    type = json['type'];
-    address = json['address'];
     libraryEmail = json['libraryEmail'];
     libraryPhone = json['libraryPhone'];
-    libraryId = json['libraryId'];
+    libraryImage = json['libraryImage'];
+    address = json['address'];
+    country = json['country'];
+    state = json['state'];
+    city = json['city'];
+    type = json['type'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['libraryName'] = this.libraryName;
-    data['city'] = this.city;
-    data['libraryImage'] = this.libraryImage;
-    data['type'] = this.type;
-    data['address'] = this.address;
     data['libraryEmail'] = this.libraryEmail;
     data['libraryPhone'] = this.libraryPhone;
-    data['libraryId'] = this.libraryId;
+    data['libraryImage'] = this.libraryImage;
+    data['address'] = this.address;
+    data['country'] = this.country;
+    data['state'] = this.state;
+    data['city'] = this.city;
+    data['type'] = this.type;
     return data;
   }
 }

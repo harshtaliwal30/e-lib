@@ -31,31 +31,27 @@ class LibraryScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              decoration: BoxDecoration(
-                color: Utils.lightBgColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-              ),
               padding: EdgeInsets.all(
                 SizeConfig.safeBlockHorizontal * 2,
               ),
               child: Card(
-                color: Utils.lightBgColor,
-                elevation: 0,
+                color: Utils.primaryColor,
+                elevation: 15,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: SizeConfig.screenHeight / 3.5,
+                      height: SizeConfig.screenHeight / 4,
                       width: double.infinity,
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(15),
+                          Radius.circular(10),
                         ),
                         child: CachedNetworkImage(
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           imageUrl: libraryModel.libraryImage!,
                           errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
@@ -64,40 +60,53 @@ class LibraryScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(
                         left: SizeConfig.safeBlockHorizontal * 2,
-                        top: SizeConfig.safeBlockHorizontal * 4,
+                        top: SizeConfig.safeBlockVertical * 2,
                       ),
                       child: Text(
                         libraryModel.libraryName!,
                         softWrap: true,
                         style: TextStyle(
-                          color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                          color: Utils.white,
+                          fontSize: SizeConfig.safeBlockHorizontal * 4,
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                         left: SizeConfig.safeBlockHorizontal * 2,
-                        top: SizeConfig.safeBlockHorizontal * 1,
+                      ),
+                      child: Text(
+                        libraryModel.address! + ", " + libraryModel.city! + ", " + libraryModel.state! + ", " + libraryModel.country!,
+                        style: TextStyle(
+                          color: Utils.grey,
+                          fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: SizeConfig.safeBlockHorizontal * 2,
+                        top: SizeConfig.safeBlockVertical * 0.5,
+                      ),
+                      child: Text(
+                        libraryModel.libraryEmail!,
+                        style: TextStyle(
+                          color: Utils.lightGrey,
+                          fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: SizeConfig.safeBlockHorizontal * 2,
+                        top: SizeConfig.safeBlockVertical * 0.5,
+                        bottom: SizeConfig.safeBlockVertical * 2,
                       ),
                       child: Text(
                         libraryModel.type!,
                         style: TextStyle(
-                          color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 2,
-                        top: SizeConfig.safeBlockHorizontal * 1,
-                      ),
-                      child: Text(
-                        libraryModel.city!,
-                        style: TextStyle(
-                          color: Utils.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4,
+                          color: Utils.lightGrey,
+                          fontSize: SizeConfig.safeBlockHorizontal * 3.5,
                         ),
                       ),
                     ),

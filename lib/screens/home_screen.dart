@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_lib/Utils/app_routes.dart';
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/size_config.dart';
 import 'package:e_lib/controllers/home_screen_controller.dart';
 import 'package:e_lib/screens/drawer_screen.dart';
-import 'package:e_lib/screens/library_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -102,13 +102,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getLibraryView(int index) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LibraryScreen(
-              libraryModel: _homePageController.librariesDataList[index],
-            ),
-          ),
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => LibraryScreen(
+        //       libraryModel: _homePageController.librariesDataList[index],
+        //     ),
+        //   ),
+        // );
+        AppRoutes.moveToScreenWithArguments(
+          AppRoutes.libraryScreenRoute,
+          arguments: _homePageController.librariesDataList[index],
         );
       },
       child: Card(

@@ -1,4 +1,5 @@
 import 'package:e_lib/screens/home_screen.dart';
+import 'package:e_lib/screens/library_screen.dart';
 import 'package:e_lib/screens/login_screen.dart';
 import 'package:e_lib/screens/otp_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class AppRoutes {
   static const String homeScreenRoute = "/homeScreen";
   static const String loginScreenRoute = "/loginScreen";
   static const String otpScreenRoute = "/otpScreen";
+  static const String libraryScreenRoute = "/libraryScreen";
 
   static routes() {
     GetPage<dynamic> _page(String route, var page) {
@@ -19,10 +21,9 @@ class AppRoutes {
       _page(homeScreenRoute, () => HomeScreen()),
       _page(loginScreenRoute, () => LoginScreen()),
       _page(otpScreenRoute, () => OTPScreen()),
+      // _page(otpScreenRoute, () => LibraryScreen()),
       // GetPage(name: loginRoute, page: () => LoginScreen()),
-      // GetPage(
-      //     name: homeitemviewRoute,
-      //     page: () => HomeItemView(homeItemViewScreenModel: Get.arguments)),
+      GetPage(name: libraryScreenRoute, page: () => LibraryScreen(libraryModel: Get.arguments)),
     ];
   }
 
@@ -30,8 +31,8 @@ class AppRoutes {
     Get.toNamed(routeName);
   }
 
-  static void moveToScreenWithArguments(String routeName, {@required var arguments}) {
-    Get.toNamed(routeName, arguments: arguments);
+  static Future<dynamic> moveToScreenWithArguments(String routeName, {@required var arguments}) async {
+    return await Get.toNamed(routeName, arguments: arguments);
   }
 
   static void moveOffScreen(String routeName) {

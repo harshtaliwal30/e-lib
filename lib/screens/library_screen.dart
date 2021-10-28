@@ -187,7 +187,7 @@ class LibraryScreen extends StatelessWidget {
                             fontSize: SizeConfig.baseFontSize * 4,
                           ),
                           top: SizeConfig.safeBlockVertical * 1,
-                          right: SizeConfig.safeBlockHorizontal * 5,
+                          right: SizeConfig.safeBlockHorizontal * 3,
                           left: SizeConfig.safeBlockHorizontal * 3,
                         ),
                         Utils().getWithPadding(
@@ -210,17 +210,17 @@ class LibraryScreen extends StatelessWidget {
                           margin: EdgeInsets.only(
                             left: SizeConfig.safeBlockHorizontal * 3,
                           ),
-                          child: Utils().getWithPadding(
-                            Utils().getText(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal * 2,
+                              vertical: SizeConfig.safeBlockVertical * 0.2,
+                            ),
+                            child: Utils().getText(
                               "Quantity: " + _libraryScreenController.booksDataList[index].quantity.toString(),
                               color: Utils.white,
                               fontWeight: FontWeight.bold,
                               fontSize: SizeConfig.baseFontSize * 2.9,
                             ),
-                            top: SizeConfig.safeBlockVertical * 0.3,
-                            bottom: SizeConfig.safeBlockVertical * 0.3,
-                            left: SizeConfig.safeBlockHorizontal * 2,
-                            right: SizeConfig.safeBlockHorizontal * 2,
                           ),
                         ),
                         Row(
@@ -261,15 +261,15 @@ class LibraryScreen extends StatelessWidget {
                             left: SizeConfig.safeBlockHorizontal * 3,
                             bottom: SizeConfig.safeBlockVertical * 1,
                           ),
-                          child: Utils().getWithPadding(
-                            Utils().getText(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal * 2,
+                              vertical: SizeConfig.safeBlockVertical * 0.2,
+                            ),
+                            child: Utils().getText(
                               _libraryScreenController.booksDataList[index].category ?? "Category",
                               fontSize: SizeConfig.baseFontSize * 3.0,
                             ),
-                            top: SizeConfig.safeBlockVertical * 0.2,
-                            bottom: SizeConfig.safeBlockVertical * 0.2,
-                            left: SizeConfig.safeBlockHorizontal * 2,
-                            right: SizeConfig.safeBlockHorizontal * 2,
                           ),
                         ),
                       ],

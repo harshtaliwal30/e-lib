@@ -22,4 +22,8 @@ class DatabaseHandler {
   Future<QuerySnapshot> fetchBooks(String? libraryId) {
     return databaseReference.collection('books').where('libraryId', isEqualTo: libraryId).orderBy("createdAt", descending: true).get();
   }
+
+  Future<void> placeIssueRequest(var data) async {
+    await databaseReference.collection('issueRequests').add(data);
+  }
 }

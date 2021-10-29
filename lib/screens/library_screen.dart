@@ -295,7 +295,19 @@ class LibraryScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: MaterialButton(
-                      onPressed: () async {},
+                      onPressed: () async {
+                        var result = await Utils().showDialog(
+                          "Alert",
+                          "Are you sure you want to issue this book",
+                          () async {
+                            await _libraryScreenController.placeIssueRequest(_libraryScreenController.booksDataList[index], libraryModel.libraryId!);
+                            Get.back(result: "requestPlaced");
+                          },
+                        );
+                        if (result != null && result == "requestPlaced") {
+                          Utils().showConfirmSnackbar("Book Issue Request Placed");
+                        }
+                      },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10),

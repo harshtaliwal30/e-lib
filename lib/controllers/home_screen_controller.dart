@@ -17,6 +17,7 @@ class HomeScreenController extends GetxController {
     DatabaseHandler().fetchLibraries().then((value) {
       value.docs.forEach((element) {
         LibraryModel libraryModel = LibraryModel.fromJson(element.data() as dynamic);
+        libraryModel.libraryId = element.id;
         librariesDataList.add(libraryModel);
         isLoading(false);
       });

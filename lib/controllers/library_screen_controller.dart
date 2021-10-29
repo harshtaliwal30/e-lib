@@ -45,6 +45,10 @@ class LibraryScreenController extends GetxController {
         status: "Pending",
         userId: pref.getString(Utils.KEY_USERID),
         createdAt: DateTime.now(),
+        approvedAt: DateTime.now(),
+        issuedAt: DateTime.now(),
+        returnedAt: DateTime.now(),
+        declinedAt: DateTime.now(),
       );
       var data = issueRequestModel.toJson();
       await DatabaseHandler().placeIssueRequest(data);

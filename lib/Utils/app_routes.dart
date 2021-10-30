@@ -1,4 +1,5 @@
 import 'package:e_lib/screens/home_screen.dart';
+import 'package:e_lib/screens/issued_books_screen.dart';
 import 'package:e_lib/screens/library_screen.dart';
 import 'package:e_lib/screens/login_screen.dart';
 import 'package:e_lib/screens/otp_screen.dart';
@@ -11,6 +12,7 @@ class AppRoutes {
   static const String loginScreenRoute = "/loginScreen";
   static const String otpScreenRoute = "/otpScreen";
   static const String libraryScreenRoute = "/libraryScreen";
+  static const String issuedBooksRoute = "/issuedBooksScreen";
 
   static routes() {
     GetPage<dynamic> _page(String route, var page) {
@@ -21,6 +23,7 @@ class AppRoutes {
       _page(homeScreenRoute, () => HomeScreen()),
       _page(loginScreenRoute, () => LoginScreen()),
       _page(otpScreenRoute, () => OTPScreen()),
+      _page(issuedBooksRoute, () => IssuedBooksScreen()),
       // _page(otpScreenRoute, () => LibraryScreen()),
       // GetPage(name: loginRoute, page: () => LoginScreen()),
       GetPage(name: libraryScreenRoute, page: () => LibraryScreen(libraryModel: Get.arguments)),

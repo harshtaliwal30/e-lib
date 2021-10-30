@@ -50,11 +50,11 @@ class DrawerScreen extends StatelessWidget {
             getDrawerItem(
               "Home",
               Icons.home,
-              "/homeScreen",
+              AppRoutes.homeScreenRoute,
               () => {
                 Get.back(),
                 AppRoutes.moveOffAllScreen(
-                  "/homeScreen",
+                  AppRoutes.homeScreenRoute,
                 )
               },
             ),
@@ -80,6 +80,17 @@ class DrawerScreen extends StatelessWidget {
                 // )
               },
               isTrailing: true,
+            ),
+            getDrawerItem(
+              "Issued Books",
+              Icons.book_rounded,
+              AppRoutes.issuedBooksRoute,
+              () => {
+                Get.back(),
+                AppRoutes.moveToScreen(
+                  AppRoutes.issuedBooksRoute,
+                )
+              },
             ),
             getDrawerItem(
               "Contact Us",

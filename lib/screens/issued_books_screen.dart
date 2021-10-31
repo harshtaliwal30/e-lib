@@ -22,11 +22,18 @@ class IssuedBooksScreen extends StatelessWidget {
           fontSize: SizeConfig.baseFontSize * 4.5,
         ),
       ),
-      body: ListView.builder(
-        itemCount: _issuedBooksController.issuedBooksList.length,
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) => getBookItem(index),
+      body: Obx(
+        () => _issuedBooksController.isLoading.isTrue
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : _issuedBooksController.issuedBooksList.length == 0
+                ? NoIssuedBooksView()
+                : ListView.builder(
+                    itemCount: _issuedBooksController.issuedBooksList.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) => getBookItem(index),
+                  ),
       ),
     );
   }
@@ -144,6 +151,32 @@ class IssuedBooksScreen extends StatelessWidget {
           fontSize: SizeConfig.baseFontSize * 2.9,
         ),
       ],
+    );
+  }
+}
+
+class NoIssuedBooksView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Utils().getWithPadding(
+            Utils().getText(
+              "No issued Books",
+              color: Utils.darkGrey,
+              fontWeight: FontWeight.bold,
+            ),
+            top: SizeConfig.safeBlockVertical * 2,
+            bottom: SizeConfig.safeBlockVertical * 2,
+          ),
+          Image.asset(
+            "assets/images/issue.png",
+            height: SizeConfig.screenWidth / 1.5,
+          ),
+        ],
+      ),
     );
   }
 }

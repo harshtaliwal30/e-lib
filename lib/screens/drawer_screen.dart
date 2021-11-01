@@ -93,6 +93,17 @@ class DrawerScreen extends StatelessWidget {
               },
             ),
             getDrawerItem(
+              "Returned Books",
+              Icons.book_rounded,
+              AppRoutes.returnedBooksRoute,
+              () => {
+                Get.back(),
+                AppRoutes.moveToScreen(
+                  AppRoutes.returnedBooksRoute,
+                )
+              },
+            ),
+            getDrawerItem(
               "Contact Us",
               Icons.phone,
               "/issueRequestsScreen",

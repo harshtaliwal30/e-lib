@@ -80,27 +80,10 @@ class ReturnedBooksScreen extends StatelessWidget {
               ),
               bottom: SizeConfig.safeBlockVertical * 1,
             ),
-            if (_returnedBooksController.returnedBooksList[index].status == "Declined") ...[
-              getStatusView("Declined", _returnedBooksController.returnedBooksList[index].declinedAt, color: Utils.red),
-            ],
-            if (_returnedBooksController.returnedBooksList[index].status == "Pending") ...[
-              getStatusView("Pending", _returnedBooksController.returnedBooksList[index].createdAt),
-            ],
-            if (_returnedBooksController.returnedBooksList[index].status == "Approved") ...[
-              getStatusView("Pending", _returnedBooksController.returnedBooksList[index].createdAt),
-              getStatusView("Approved", _returnedBooksController.returnedBooksList[index].approvedAt),
-            ],
-            if (_returnedBooksController.returnedBooksList[index].status == "Issued") ...[
-              getStatusView("Pending", _returnedBooksController.returnedBooksList[index].createdAt),
-              getStatusView("Approved", _returnedBooksController.returnedBooksList[index].approvedAt),
-              getStatusView("Issued", _returnedBooksController.returnedBooksList[index].issuedAt),
-            ],
-            if (_returnedBooksController.returnedBooksList[index].status == "Returned") ...[
-              getStatusView("Pending", _returnedBooksController.returnedBooksList[index].createdAt),
-              getStatusView("Approved", _returnedBooksController.returnedBooksList[index].approvedAt),
-              getStatusView("Issued", _returnedBooksController.returnedBooksList[index].issuedAt),
-              getStatusView("Returned", _returnedBooksController.returnedBooksList[index].returnedAt),
-            ],
+            getStatusView("Pending", _returnedBooksController.returnedBooksList[index].createdAt),
+            getStatusView("Approved", _returnedBooksController.returnedBooksList[index].approvedAt),
+            getStatusView("Issued", _returnedBooksController.returnedBooksList[index].issuedAt),
+            getStatusView("Returned", _returnedBooksController.returnedBooksList[index].returnedAt),
           ],
         ),
       ),
@@ -154,7 +137,7 @@ class NoIssuedBooksView extends StatelessWidget {
         children: [
           Utils().getWithPadding(
             Utils().getText(
-              "No issued Books",
+              "No Returned Books",
               color: Utils.darkGrey,
               fontWeight: FontWeight.bold,
             ),

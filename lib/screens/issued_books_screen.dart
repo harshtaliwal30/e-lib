@@ -57,61 +57,34 @@ class IssuedBooksScreen extends StatelessWidget {
         right: SizeConfig.safeBlockHorizontal * 2,
         top: SizeConfig.safeBlockVertical * 2,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Utils().getWithPadding(
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: SizeConfig.safeBlockVertical * 1,
+          horizontal: SizeConfig.safeBlockHorizontal * 3,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             Utils().getText(
               _issuedBooksController.issuedBooksList[index].bookName,
               color: Utils.primaryColor,
               fontWeight: FontWeight.bold,
               fontSize: SizeConfig.baseFontSize * 3.7,
             ),
-            top: SizeConfig.safeBlockVertical * 1,
-            right: SizeConfig.safeBlockHorizontal * 3,
-            left: SizeConfig.safeBlockHorizontal * 3,
-          ),
-          Utils().getWithPadding(
-            Utils().getText(
-              _issuedBooksController.issuedBooksList[index].authorName,
-              color: Utils.grey,
-              fontWeight: FontWeight.bold,
-              fontSize: SizeConfig.baseFontSize * 3.2,
+            Utils().getWithPadding(
+              Utils().getText(
+                _issuedBooksController.issuedBooksList[index].authorName,
+                color: Utils.grey,
+                fontWeight: FontWeight.bold,
+                fontSize: SizeConfig.baseFontSize * 3.2,
+              ),
+              bottom: SizeConfig.safeBlockVertical * 1,
             ),
-            right: SizeConfig.safeBlockHorizontal * 3,
-            left: SizeConfig.safeBlockHorizontal * 3,
-            bottom: SizeConfig.safeBlockVertical * 1,
-          ),
-          if (_issuedBooksController.issuedBooksList[index].status == "Declined") ...[
-            getStatusView("Declined", _issuedBooksController.issuedBooksList[index].declinedAt, color: Utils.red),
-          ],
-          if (_issuedBooksController.issuedBooksList[index].status == "Pending") ...[
-            getStatusView("Pending", _issuedBooksController.issuedBooksList[index].createdAt),
-          ],
-          if (_issuedBooksController.issuedBooksList[index].status == "Approved") ...[
-            getStatusView("Pending", _issuedBooksController.issuedBooksList[index].createdAt),
-            getStatusView("Approved", _issuedBooksController.issuedBooksList[index].approvedAt),
-          ],
-          if (_issuedBooksController.issuedBooksList[index].status == "Issued") ...[
             getStatusView("Pending", _issuedBooksController.issuedBooksList[index].createdAt),
             getStatusView("Approved", _issuedBooksController.issuedBooksList[index].approvedAt),
             getStatusView("Issued", _issuedBooksController.issuedBooksList[index].issuedAt),
           ],
-          if (_issuedBooksController.issuedBooksList[index].status == "Returned") ...[
-            getStatusView("Pending", _issuedBooksController.issuedBooksList[index].createdAt),
-            getStatusView("Approved", _issuedBooksController.issuedBooksList[index].approvedAt),
-            getStatusView("Issued", _issuedBooksController.issuedBooksList[index].issuedAt),
-            getStatusView("Returned", _issuedBooksController.issuedBooksList[index].returnedAt),
-          ],
-          SizedBox(
-            height: 5,
-          ),
-          Divider(
-            height: 0,
-            color: Utils.darkGrey,
-            thickness: 0.5,
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -135,7 +108,6 @@ class IssuedBooksScreen extends StatelessWidget {
               ),
             ],
           ),
-          left: SizeConfig.safeBlockHorizontal * 3,
           right: SizeConfig.safeBlockHorizontal * 1,
         ),
         Utils().getText(
@@ -164,7 +136,7 @@ class NoIssuedBooksView extends StatelessWidget {
         children: [
           Utils().getWithPadding(
             Utils().getText(
-              "No issued Books",
+              "No Issued Books",
               color: Utils.darkGrey,
               fontWeight: FontWeight.bold,
             ),

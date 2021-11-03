@@ -72,12 +72,12 @@ class DrawerScreen extends StatelessWidget {
             getDrawerItem(
               "Requests",
               Icons.notifications_on_outlined,
-              "/issueRequestsScreen",
+              AppRoutes.issueRequestsRoute,
               () => {
-                // Get.back(),
-                // AppRoutes.moveToScreen(
-                //   "/issueRequestsScreen",
-                // )
+                Get.back(),
+                AppRoutes.moveToScreen(
+                  AppRoutes.issueRequestsRoute,
+                )
               },
               isTrailing: true,
             ),

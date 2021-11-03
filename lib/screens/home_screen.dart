@@ -102,14 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getLibraryView(int index) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => LibraryScreen(
-        //       libraryModel: _homePageController.librariesDataList[index],
-        //     ),
-        //   ),
-        // );
         AppRoutes.moveToScreenWithArguments(
           AppRoutes.libraryScreenRoute,
           arguments: _homePageController.librariesDataList[index],

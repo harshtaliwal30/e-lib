@@ -1,13 +1,14 @@
 import 'package:e_lib/Utils/app_routes.dart';
 import 'package:e_lib/Utils/size_config.dart';
 import 'package:e_lib/Utils/utils.dart';
+import 'package:e_lib/controllers/home_screen_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerScreen extends StatelessWidget {
-  const DrawerScreen({Key? key}) : super(key: key);
+  final HomeScreenController _homeScreenController = Get.find<HomeScreenController>();
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +80,25 @@ class DrawerScreen extends StatelessWidget {
                   AppRoutes.issueRequestsRoute,
                 )
               },
-              isTrailing: true,
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Utils().getChipView(
+                  //   _homeScreenController.pendingRequestsCount.toString(),
+                  //   color: Utils.amber,
+                  // ),
+                  // SizedBox(width: 6),
+                  Utils().getChipView(
+                    _homeScreenController.approvedRequestsCount.toString(),
+                    color: Utils.green,
+                  ),
+                  SizedBox(width: 8),
+                  Utils().getChipView(
+                    _homeScreenController.declinedRequestsCount.toString(),
+                    color: Utils.red,
+                  )
+                ],
+              ),
             ),
             getDrawerItem(
               "Issued Books",
@@ -139,8 +158,8 @@ class DrawerScreen extends StatelessWidget {
     IconData leadingIcon,
     String route,
     Function()? onTap, {
-    bool isTrailing = false,
     Color color = Utils.grey,
+    Widget? trailing,
   }) {
     return Utils().getWithPadding(
       ListTile(
@@ -148,7 +167,7 @@ class DrawerScreen extends StatelessWidget {
           leadingIcon,
           color: Get.currentRoute == route ? Utils.white : color,
         ),
-        trailing: isTrailing ? Utils().getChipView("22") : null,
+        trailing: trailing,
         horizontalTitleGap: 0.0,
         title: Utils().getText(
           title,

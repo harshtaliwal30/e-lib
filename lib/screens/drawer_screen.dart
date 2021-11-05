@@ -50,7 +50,7 @@ class DrawerScreen extends StatelessWidget {
             SizedBox(height: 10),
             getDrawerItem(
               "Home",
-              Icons.home,
+              Icons.home_rounded,
               AppRoutes.homeScreenRoute,
               () => {
                 Get.back(),
@@ -61,7 +61,7 @@ class DrawerScreen extends StatelessWidget {
             ),
             getDrawerItem(
               "Profile",
-              Icons.person,
+              Icons.person_rounded,
               "/issueRequestsScreen",
               () => {
                 // Get.back(),
@@ -72,7 +72,7 @@ class DrawerScreen extends StatelessWidget {
             ),
             getDrawerItem(
               "Requests",
-              Icons.notifications_on_outlined,
+              Icons.notifications_on_rounded,
               AppRoutes.issueRequestsRoute,
               () => {
                 Get.back(),
@@ -113,7 +113,7 @@ class DrawerScreen extends StatelessWidget {
             ),
             getDrawerItem(
               "Returned Books",
-              Icons.book_rounded,
+              Icons.bookmark_added_rounded,
               AppRoutes.returnedBooksRoute,
               () => {
                 Get.back(),
@@ -124,7 +124,7 @@ class DrawerScreen extends StatelessWidget {
             ),
             getDrawerItem(
               "Contact Us",
-              Icons.phone,
+              Icons.phone_rounded,
               "/issueRequestsScreen",
               () => {
                 // Get.back(),

@@ -38,7 +38,7 @@ class LibraryScreen extends StatelessWidget {
                 ),
                 child: Card(
                   color: Utils.primaryColor,
-                  elevation: 0,
+                  elevation: 15,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -150,8 +150,8 @@ class LibraryScreen extends StatelessWidget {
         ),
       ),
       margin: EdgeInsets.only(
-        left: SizeConfig.safeBlockHorizontal * 2,
-        right: SizeConfig.safeBlockHorizontal * 2,
+        left: SizeConfig.safeBlockHorizontal * 3,
+        right: SizeConfig.safeBlockHorizontal * 3,
         bottom: SizeConfig.safeBlockHorizontal * 3,
       ),
       child: Column(

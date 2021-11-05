@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-enum SortBy { pending, approved, declined }
-
 class IssueRequestsScreen extends StatelessWidget {
   final IssueRequestsController _issueRequestController = Get.put(IssueRequestsController());
 
@@ -83,12 +81,12 @@ class IssueRequestsScreen extends StatelessWidget {
                         },
                         itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                           const PopupMenuItem(
-                            value: "Pending",
-                            child: Text('Pending'),
-                          ),
-                          const PopupMenuItem(
                             value: "Approved",
                             child: Text('Approved'),
+                          ),
+                          const PopupMenuItem(
+                            value: "Pending",
+                            child: Text('Pending'),
                           ),
                           const PopupMenuItem(
                             value: "Declined",
@@ -165,17 +163,6 @@ class IssueRequestsScreen extends StatelessWidget {
           if (_issueRequestController.issueRequestsList[index].status == "Approved") ...[
             getStatusView("Pending", _issueRequestController.issueRequestsList[index].createdAt),
             getStatusView("Approved", _issueRequestController.issueRequestsList[index].approvedAt),
-          ],
-          if (_issueRequestController.issueRequestsList[index].status == "Issued") ...[
-            getStatusView("Pending", _issueRequestController.issueRequestsList[index].createdAt),
-            getStatusView("Approved", _issueRequestController.issueRequestsList[index].approvedAt),
-            getStatusView("Issued", _issueRequestController.issueRequestsList[index].issuedAt),
-          ],
-          if (_issueRequestController.issueRequestsList[index].status == "Returned") ...[
-            getStatusView("Pending", _issueRequestController.issueRequestsList[index].createdAt),
-            getStatusView("Approved", _issueRequestController.issueRequestsList[index].approvedAt),
-            getStatusView("Issued", _issueRequestController.issueRequestsList[index].issuedAt),
-            getStatusView("Returned", _issueRequestController.issueRequestsList[index].returnedAt),
           ],
         ],
       ),

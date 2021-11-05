@@ -62,12 +62,12 @@ class DrawerScreen extends StatelessWidget {
             getDrawerItem(
               "Profile",
               Icons.person_rounded,
-              "/issueRequestsScreen",
+              AppRoutes.profileRoute,
               () => {
-                // Get.back(),
-                // AppRoutes.moveToScreen(
-                //   "/issueRequestsScreen",
-                // )
+                Get.back(),
+                AppRoutes.moveToScreen(
+                  AppRoutes.profileRoute,
+                )
               },
             ),
             getDrawerItem(
@@ -83,11 +83,6 @@ class DrawerScreen extends StatelessWidget {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Utils().getChipView(
-                  //   _homeScreenController.pendingRequestsCount.toString(),
-                  //   color: Utils.amber,
-                  // ),
-                  // SizedBox(width: 6),
                   Utils().getChipView(
                     _homeScreenController.approvedRequestsCount.toString(),
                     color: Utils.green,
@@ -136,7 +131,7 @@ class DrawerScreen extends StatelessWidget {
             getDrawerItem(
               "Logout",
               Icons.logout_rounded,
-              "/loginScreen",
+              AppRoutes.loginScreenRoute,
               () => {
                 Get.back(),
                 SharedPreferences.getInstance().then((onValue) {

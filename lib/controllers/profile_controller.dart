@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 import 'package:e_lib/Utils/size_config.dart';
 import 'package:e_lib/Utils/utils.dart';
+import 'package:e_lib/models/user_model.dart';
 import 'package:e_lib/services/database_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileController extends GetxController {
-  // LibraryModel libraryModel = LibraryModel();
+  UserModel userModel = UserModel();
   String? docId = "";
   TextEditingController userNameController = TextEditingController();
   TextEditingController userEmailController = TextEditingController();
@@ -26,55 +27,46 @@ class ProfileController extends GetxController {
 
   @override
   void onInit() {
-    fetchLibraryData();
+    fetchUserData();
     super.onInit();
   }
 
-  void fetchLibraryData() {
-    // SharedPreferences.getInstance().then((pref) {
-    //   docId = pref.getString(Utils.KEY_USERID);
-    //   DatabaseHandler().fetchLibraryData(docId).then((value) {
-    //     Map<String, dynamic> docData = value.data() as dynamic;
-    //     docData["libraryId"] = value.id;
-    //     libraryModel = LibraryModel.fromJson(docData);
-    //     libraryNameController.text = libraryModel.libraryName ?? "";
-    //     libraryEmailController.text = libraryModel.libraryEmail ?? "";
-    //     libraryPhoneController.text = libraryModel.libraryPhone!;
-    //     imageUrl.value = libraryModel.libraryImage ?? "";
-    //     addressController.text = libraryModel.address ?? "";
-    //     countryValue.value = libraryModel.country ?? "";
-    //     stateValue.value = libraryModel.state ?? "";
-    //     cityValue.value = libraryModel.city ?? "";
-    //     if (libraryModel.type != null) {
-    //       if (libraryModel.type == "Private") {
-    //         isSelected[0] = true;
-    //         isSelected[1] = false;
-    //       } else {
-    //         isSelected[0] = false;
-    //         isSelected[1] = true;
-    //       }
-    //     }
-    //     isLoading(false);
-    //   });
-    // });
+  void fetchUserData() {
+    SharedPreferences.getInstance().then((pref) {
+      docId = pref.getString(Utils.KEY_USERID);
+      DatabaseHandler().fetchUserData(docId!).then((value) {
+        Map<String, dynamic> docData = value.data() as dynamic;
+        docData["userId"] = value.id;
+        userModel = UserModel.fromJson(docData);
+        userNameController.text = userModel.userName ?? "";
+        userEmailController.text = userModel.userEmail ?? "";
+        userPhoneController.text = userModel.userPhone!;
+        imageUrl.value = userModel.userImage ?? "";
+        addressController.text = userModel.address ?? "";
+        countryValue.value = userModel.country ?? "";
+        stateValue.value = userModel.state ?? "";
+        cityValue.value = userModel.city ?? "";
+        isLoading(false);
+      });
+    });
   }
 
-  Future<void> updateLibraryData() async {
-    // LibraryModel _libraryModel = new LibraryModel(
-    //     libraryName: libraryNameController.text,
-    //     libraryEmail: libraryEmailController.text,
-    //     libraryPhone: libraryPhoneController.text,
-    //     libraryImage: imageUrl.value,
-    //     address: addressController.text,
-    //     country: countryValue.value,
-    //     state: stateValue.value,
-    //     city: cityValue.value,
-    //     type: isSelected[0] ? "Private" : "Institutional");
+  Future<void> updateUserData() async {
+    UserModel _userModel = new UserModel(
+      userName: userNameController.text,
+      userEmail: userEmailController.text,
+      userPhone: userPhoneController.text,
+      userImage: imageUrl.value,
+      address: addressController.text,
+      country: countryValue.value,
+      state: stateValue.value,
+      city: cityValue.value,
+    );
 
-    // var data = _libraryModel.toJson();
-    // DatabaseHandler().updateLibrary(data, docId).then((value) {
-    //   Get.back();
-    // });
+    var data = _userModel.toJson();
+    DatabaseHandler().updateUserData(data, docId).then((value) {
+      Get.back();
+    });
   }
 
   uploadProfileImage() async {
@@ -100,7 +92,7 @@ class ProfileController extends GetxController {
       //   updateLibraryData();
       // });
     }
-    // else if (libraryModel.libraryImage != null) {
+    // else if (userModel.libraryImage != null) {
     //   updateLibraryData();
     // } else {
     //   Utils().showWarningSnackbar("Please select library image");

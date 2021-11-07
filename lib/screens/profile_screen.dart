@@ -42,33 +42,33 @@ class ProfileScreen extends StatelessWidget {
                         SizedBox(height: 20),
                         Row(
                           children: [
-                            // InkWell(
-                            //   onTap: () async {
-                            //     _profileController.openPickerOptions();
-                            //   },
-                            //   child: Container(
-                            //     height: SizeConfig.screenHeight / 5,
-                            //     width: SizeConfig.screenWidth / 2.5,
-                            //     decoration: BoxDecoration(
-                            //       color: Utils.lightBgColor,
-                            //       borderRadius: BorderRadius.all(
-                            //         Radius.circular(10),
-                            //       ),
-                            //     ),
-                            //     child: _profileController.imageUrl.value.length > 0
-                            //         ? Image.network(_profileController.libraryModel.libraryImage!)
-                            //         : _profileController.image.value.path.length > 0
-                            //             ? Image.file(
-                            //                 _profileController.image.value,
-                            //                 fit: BoxFit.fill,
-                            //               )
-                            //             : Icon(
-                            //                 Icons.photo_library,
-                            //                 color: Utils.amber,
-                            //                 size: SizeConfig.iconGeneralHeightAndWidth * 2,
-                            //               ),
-                            //   ),
-                            // ),
+                            InkWell(
+                              onTap: () async {
+                                _profileController.openPickerOptions();
+                              },
+                              child: Container(
+                                height: SizeConfig.screenHeight / 5,
+                                width: SizeConfig.screenWidth / 2.5,
+                                decoration: BoxDecoration(
+                                  color: Utils.lightBgColor,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                ),
+                                child: _profileController.imageUrl.value.length > 0
+                                    ? Image.network(_profileController.userModel.userImage!)
+                                    : _profileController.image.value.path.length > 0
+                                        ? Image.file(
+                                            _profileController.image.value,
+                                            fit: BoxFit.fill,
+                                          )
+                                        : Icon(
+                                            Icons.photo_library,
+                                            color: Utils.amber,
+                                            size: SizeConfig.iconGeneralHeightAndWidth * 2,
+                                          ),
+                              ),
+                            ),
                             Image.asset(
                               "assets/images/profile.png",
                               width: SizeConfig.screenWidth / 2,

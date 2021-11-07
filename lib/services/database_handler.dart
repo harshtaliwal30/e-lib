@@ -19,6 +19,10 @@ class DatabaseHandler {
     return databaseReference.collection("libraries").get();
   }
 
+  Future<DocumentSnapshot> fetchUserData(String docId) {
+    return databaseReference.collection("users").doc(docId).get();
+  }
+
   Future<QuerySnapshot> fetchBooks(String? libraryId) {
     return databaseReference.collection('books').where('libraryId', isEqualTo: libraryId).orderBy("createdAt", descending: true).get();
   }
@@ -34,5 +38,9 @@ class DatabaseHandler {
 
   Future<void> placeIssueRequest(var data) async {
     await databaseReference.collection('issueRequests').add(data);
+  }
+
+  Future<void> updateUserData(var data, String? id) async {
+    await databaseReference.collection('libraries').doc(id).update(data);
   }
 }

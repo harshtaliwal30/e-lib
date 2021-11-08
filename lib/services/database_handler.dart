@@ -41,6 +41,6 @@ class DatabaseHandler {
   }
 
   Future<void> updateUserData(var data, String? id) async {
-    await databaseReference.collection('libraries').doc(id).update(data);
+    await databaseReference.collection('users').doc(id).update(data);
   }
 }

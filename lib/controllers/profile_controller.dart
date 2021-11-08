@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart' as dio;
+import 'package:e_lib/Utils/cloudinary_manager.dart';
 import 'package:e_lib/Utils/size_config.dart';
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/models/user_model.dart';
@@ -17,7 +18,7 @@ class ProfileController extends GetxController {
   TextEditingController userEmailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController userPhoneController = TextEditingController();
-  var isLoading = false.obs;
+  var isLoading = true.obs;
   var countryValue = "".obs;
   var stateValue = "".obs;
   var cityValue = "".obs;
@@ -27,6 +28,7 @@ class ProfileController extends GetxController {
 
   @override
   void onInit() {
+    isLoading(true);
     fetchUserData();
     super.onInit();
   }
@@ -47,6 +49,7 @@ class ProfileController extends GetxController {
         stateValue.value = userModel.state ?? "";
         cityValue.value = userModel.city ?? "";
         isLoading(false);
+        update();
       });
     });
   }
@@ -83,20 +86,19 @@ class ProfileController extends GetxController {
           contentType: new MediaType("image", "jpeg"),
         ),
         "upload_preset": "upload_preset",
-        "folder": "Profile_Images",
+        "folder": "User_Profile_Images",
         "cloud_name": "dciyee0g5",
       });
-      // CloudinaryManager().uploadImage(formData).then((value) {
-      //   imageUrl.value = value;
-      //   Get.back();
-      //   updateLibraryData();
-      // });
+      CloudinaryManager().uploadImage(formData).then((value) {
+        imageUrl.value = value;
+        Get.back();
+        updateUserData();
+      });
+    } else if (userModel.userImage != null) {
+      updateUserData();
+    } else {
+      Utils().showWarningSnackbar("Please select profile image");
     }
-    // else if (userModel.libraryImage != null) {
-    //   updateLibraryData();
-    // } else {
-    //   Utils().showWarningSnackbar("Please select library image");
-    // }
   }
 
   _imgFromCamera() async {

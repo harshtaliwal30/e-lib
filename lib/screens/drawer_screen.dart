@@ -2,6 +2,7 @@ import 'package:e_lib/Utils/app_routes.dart';
 import 'package:e_lib/Utils/size_config.dart';
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/controllers/home_screen_controller.dart';
+import 'package:e_lib/controllers/profile_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,36 +18,42 @@ class DrawerScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Utils.blue,
-                    // backgroundImage: NetworkImage(
-                    //   "https://firebasestorage.googleapis.com/v0/b/e-lib-e53d6.appspot.com/o/28828394_950086555154619_9137006216337597187_o.jpg?alt=media&token=dd2c5145-1e19-43d6-ace7-6bede86f7a7d",
-                    // ),
-                  ),
-                  Utils().getWithPadding(
-                    Utils().getText(
-                      "Harsh Taliwal",
-                      fontWeight: FontWeight.bold,
-                      fontSize: SizeConfig.baseFontSize * 4,
+            GetBuilder<ProfileController>(
+                init: ProfileController(),
+                builder: (profileController) {
+                  return DrawerHeader(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Utils.blue,
+                          backgroundImage: profileController.userModel.userImage != null
+                              ? NetworkImage(
+                                  profileController.userModel.userImage!,
+                                )
+                              : null,
+                        ),
+                        Utils().getWithPadding(
+                          Utils().getText(
+                            profileController.userModel.userName ?? "",
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.baseFontSize * 4,
+                          ),
+                          top: SizeConfig.safeBlockVertical * 1,
+                        ),
+                        Utils().getText(
+                          profileController.userModel.city ?? "",
+                          color: Utils.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: SizeConfig.baseFontSize * 3.5,
+                        )
+                      ],
                     ),
-                    top: SizeConfig.safeBlockVertical * 1,
-                  ),
-                  Utils().getText(
-                    "Aligarh",
-                    color: Utils.grey,
-                    fontWeight: FontWeight.bold,
-                    fontSize: SizeConfig.baseFontSize * 3.5,
-                  )
-                ],
-              ),
-              decoration: BoxDecoration(),
-            ),
+                    decoration: BoxDecoration(),
+                  );
+                }),
             SizedBox(height: 10),
             getDrawerItem(
               "Home",

@@ -56,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
                                   ),
                                 ),
                                 child: _profileController.imageUrl.value.length > 0
-                                    ? Image.network(_profileController.userModel.userImage!)
+                                    ? Image.network(_profileController.imageUrl.value)
                                     : _profileController.image.value.path.length > 0
                                         ? Image.file(
                                             _profileController.image.value,

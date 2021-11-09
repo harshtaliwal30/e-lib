@@ -38,8 +38,8 @@ class ProfileController extends GetxController {
       docId = pref.getString(Utils.KEY_USERID);
       DatabaseHandler().fetchUserData(docId!).then((value) {
         Map<String, dynamic> docData = value.data() as dynamic;
-        docData["userId"] = value.id;
         userModel = UserModel.fromJson(docData);
+        userModel.userId = docId;
         userNameController.text = userModel.userName ?? "";
         userEmailController.text = userModel.userEmail ?? "";
         userPhoneController.text = userModel.userPhone!;

@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerScreen extends StatelessWidget {
   final HomeScreenController _homeScreenController = Get.find<HomeScreenController>();
+  final ProfileController _profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -18,42 +19,38 @@ class DrawerScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            GetBuilder<ProfileController>(
-                init: ProfileController(),
-                builder: (profileController) {
-                  return DrawerHeader(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Utils.blue,
-                          backgroundImage: profileController.userModel.userImage != null
-                              ? NetworkImage(
-                                  profileController.userModel.userImage!,
-                                )
-                              : null,
-                        ),
-                        Utils().getWithPadding(
-                          Utils().getText(
-                            profileController.userModel.userName ?? "",
-                            fontWeight: FontWeight.bold,
-                            fontSize: SizeConfig.baseFontSize * 4,
-                          ),
-                          top: SizeConfig.safeBlockVertical * 1,
-                        ),
-                        Utils().getText(
-                          profileController.userModel.city ?? "",
-                          color: Utils.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.baseFontSize * 3.5,
-                        )
-                      ],
+            DrawerHeader(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Utils.blue,
+                    backgroundImage: _profileController.userModel.userImage != null
+                        ? NetworkImage(
+                            _profileController.userModel.userImage!,
+                          )
+                        : null,
+                  ),
+                  Utils().getWithPadding(
+                    Utils().getText(
+                      _profileController.userModel.userName ?? "",
+                      fontWeight: FontWeight.bold,
+                      fontSize: SizeConfig.baseFontSize * 4,
                     ),
-                    decoration: BoxDecoration(),
-                  );
-                }),
+                    top: SizeConfig.safeBlockVertical * 1,
+                  ),
+                  Utils().getText(
+                    _profileController.userModel.city ?? "",
+                    color: Utils.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: SizeConfig.baseFontSize * 3.5,
+                  )
+                ],
+              ),
+              decoration: BoxDecoration(),
+            ),
             SizedBox(height: 10),
             getDrawerItem(
               "Home",

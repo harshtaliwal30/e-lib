@@ -3,6 +3,7 @@ import 'package:e_lib/Utils/app_routes.dart';
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/size_config.dart';
 import 'package:e_lib/controllers/home_screen_controller.dart';
+import 'package:e_lib/controllers/profile_controller.dart';
 import 'package:e_lib/screens/drawer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,23 +16,56 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final HomeScreenController _homePageController = Get.put(HomeScreenController());
 
   @override
   Widget build(BuildContext context) {
     SizeConfig.initOnStartUp(context);
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Utils.white,
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Utils.primaryColor),
-        elevation: 0.0,
-        centerTitle: true,
-        backgroundColor: Utils.white,
-        title: Utils().getText(
-          'Libraries',
-          color: Utils.primaryColor,
-          fontSize: SizeConfig.baseFontSize * 4.5,
-        ),
+      appBar: PreferredSize(
+        preferredSize: const Size(0, 60),
+        child: GetBuilder<ProfileController>(
+            init: ProfileController(),
+            builder: (profileController) {
+              return AppBar(
+                iconTheme: IconThemeData(color: Utils.primaryColor),
+                elevation: 0.0,
+                centerTitle: true,
+                backgroundColor: Utils.white,
+                title: Utils().getText(
+                  'Libraries',
+                  color: Utils.primaryColor,
+                  fontSize: SizeConfig.baseFontSize * 4.5,
+                ),
+                leadingWidth: SizeConfig.screenWidth * 0.23,
+                leading: GestureDetector(
+                  onTap: () {
+                    _scaffoldKey.currentState!.openDrawer();
+                  },
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal * 3),
+                        child: Icon(Icons.menu_rounded),
+                      ),
+                      SizedBox(width: SizeConfig.safeBlockHorizontal * 3),
+                      CircleAvatar(
+                        radius: SizeConfig.iconGeneralHeightAndWidth * 0.5,
+                        backgroundColor: Utils.blue,
+                        backgroundImage: profileController.userModel.userImage != null
+                            ? NetworkImage(
+                                profileController.userModel.userImage!,
+                              )
+                            : null,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }),
       ),
       body: Obx(
         () => SingleChildScrollView(

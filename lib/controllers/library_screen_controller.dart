@@ -1,6 +1,7 @@
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/models/book_model.dart';
 import 'package:e_lib/models/issue_request_model.dart';
+import 'package:e_lib/models/user_model.dart';
 import 'package:e_lib/services/database_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,29 +31,29 @@ class LibraryScreenController extends GetxController {
     });
   }
 
-  Future<void> placeIssueRequest(BookModel bookModel, String libraryId) async {
+  Future<void> placeIssueRequest(BookModel bookModel, String libraryId, UserModel userModel) async {
     Get.dialog(
       Center(
         child: CircularProgressIndicator(),
       ),
       barrierDismissible: false,
     );
-    await SharedPreferences.getInstance().then((pref) async {
-      IssueRequestModel issueRequestModel = new IssueRequestModel(
-        bookName: bookModel.bookName,
-        authorName: bookModel.authorName,
-        libraryId: libraryId,
-        status: "Pending",
-        userId: pref.getString(Utils.KEY_USERID),
-        createdAt: DateTime.now(),
-        approvedAt: DateTime.now(),
-        issuedAt: DateTime.now(),
-        returnedAt: DateTime.now(),
-        declinedAt: DateTime.now(),
-      );
-      var data = issueRequestModel.toJson();
-      await DatabaseHandler().placeIssueRequest(data);
-      Get.back();
-    });
+    IssueRequestModel issueRequestModel = new IssueRequestModel(
+      bookName: bookModel.bookName,
+      authorName: bookModel.authorName,
+      libraryId: libraryId,
+      status: "Pending",
+      userId: userModel.userId,
+      userName: userModel.userName,
+      userImage: userModel.userImage,
+      createdAt: DateTime.now(),
+      approvedAt: DateTime.now(),
+      issuedAt: DateTime.now(),
+      returnedAt: DateTime.now(),
+      declinedAt: DateTime.now(),
+    );
+    var data = issueRequestModel.toJson();
+    await DatabaseHandler().placeIssueRequest(data);
+    Get.back();
   }
 }

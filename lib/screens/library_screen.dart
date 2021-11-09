@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_lib/Utils/utils.dart';
 import 'package:e_lib/Utils/size_config.dart';
 import 'package:e_lib/controllers/library_screen_controller.dart';
+import 'package:e_lib/controllers/profile_controller.dart';
 import 'package:e_lib/models/library_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class LibraryScreen extends StatelessWidget {
   LibraryScreen({required this.libraryModel});
 
   final LibraryScreenController _libraryScreenController = Get.put(LibraryScreenController());
+  final ProfileController _profileController = Get.find<ProfileController>();
 
   @override
   Widget build(BuildContext context) {
@@ -299,7 +301,8 @@ class LibraryScreen extends StatelessWidget {
                         "Alert",
                         "Are you sure you want to issue this book",
                         () async {
-                          await _libraryScreenController.placeIssueRequest(_libraryScreenController.booksDataList[index], libraryModel.libraryId!);
+                          await _libraryScreenController.placeIssueRequest(
+                              _libraryScreenController.booksDataList[index], libraryModel.libraryId!, _profileController.userModel);
                           Get.back(result: "requestPlaced");
                         },
                       );
